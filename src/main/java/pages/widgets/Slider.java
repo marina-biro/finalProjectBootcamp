@@ -1,4 +1,4 @@
-package pages.Widgets;
+package pages.widgets;
 
 import lombok.Data;
 import org.openqa.selenium.By;

@@ -1,4 +1,4 @@
-package pages.Elements;
+package pages.elements;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +15,7 @@ public class CheckBox extends BasePage {
     private By checkBoxOption = By.id("item-1");
     private By checkBoxBox = By.cssSelector("label[for='tree-node-home'");
     private By checkBoxHolder = By.cssSelector("svg[class='rct-icon rct-icon-check']");
+    
 
     public void checkBoxClick(){
 

@@ -1,10 +1,9 @@
-package pages.Widgets;
+package pages.widgets;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
 
@@ -27,7 +26,7 @@ public class ProgressBar extends BasePage {
         getDriver().findElement(progressBarOption).click();
         jsExecutor.executeScript("window.scrollBy(0,-500)");
         getDriver().findElement(startButton).click();
-        Thread.sleep(11000);
+        Thread.sleep(11200);
         // the following code sometimes works, most of the time the website doesn't load quickly enough
    //   getDriverWait().until(ExpectedConditions.attributeContains(progressBarElement(), "aria-valuenow","90"));
    //   getDriverWait().until(ExpectedConditions.textToBePresentInElement(progressBarElement(),"80%"));  // sometimes works, sometimes timeout

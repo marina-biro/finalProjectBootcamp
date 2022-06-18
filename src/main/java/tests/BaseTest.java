@@ -1,15 +1,15 @@
 package tests;
 
-import pages.AlertsFrameAndWindows.AlertsOption;
+import pages.alertsFrameAndWindows.AlertsOption;
 import lombok.Data;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 import pages.*;
-import pages.Elements.*;
-import pages.Widgets.ProgressBar;
-import pages.Widgets.Slider;
+import pages.elements.*;
+import pages.widgets.ProgressBar;
+import pages.widgets.Slider;
 
 import java.time.Duration;
 

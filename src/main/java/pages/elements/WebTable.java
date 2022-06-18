@@ -1,9 +1,10 @@
-package pages.Elements;
+package pages.elements;
 
 import lombok.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
 
@@ -13,6 +14,8 @@ public class WebTable extends BasePage {
         public WebTable(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
     }
+
+    //TC-web_tables-05
 
     private By webTableOption = By.id("item-3");
     private By webTableAddButton = By.id("addNewRecordButton");
@@ -53,6 +56,8 @@ public class WebTable extends BasePage {
         webTableFormSubmit();
     }
 
+
+    //TC-Web_Tables-05a
     public void webTableClearForm(String name, String age){
         getWebTableFirstName().clear();
         getWebTableFirstName().sendKeys(name);
@@ -60,6 +65,7 @@ public class WebTable extends BasePage {
         getWebTableAge().sendKeys(age);
         webTableFormSubmit();
     }
+
 
     public void webTableClick(){
         getDriver().findElement(webTableOption).click();
@@ -80,7 +86,8 @@ public class WebTable extends BasePage {
     private By salaryRow = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[5]");
     private By departmentRow = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[6]");
 
-    private By editEntryIcon = By.id("edit-record-4");
+    private By editEntryIcon = By.cssSelector("span[title='Edit']");
+    private By deleteEntryIcon = By.cssSelector("span[title='Delete']");
 
 
     public void webTablesSearchEntry(String email){
@@ -107,16 +114,33 @@ public class WebTable extends BasePage {
     public WebElement webTableSearchResultDepartment(){
         return getDriver().findElement(departmentRow);
     }
+
     public void webTableEditEntry(){
+        getDriverWait().until(ExpectedConditions.visibilityOfElementLocated(editEntryIcon));
         getDriver().findElement(editEntryIcon).click();
     }
 
 
-    public void createAndFindEntry(){
-       webTableAddEntry();
-       webTablePopulateForm("John", "Doe", "john.doe@gmail.com", "30", "10000", "IT");
-       webTablesSearchEntry("john.doe@gmail.com");
+    //TC-Web_Tables-05b
+    public void webTableDeleteEntry() {
+        getDriverWait().until(ExpectedConditions.visibilityOfElementLocated(deleteEntryIcon));
+        getDriver().findElement(deleteEntryIcon).click();
     }
 
+
+    // must edit!!!!!!!!
+    public boolean entryDeletedRecord(){
+        WebElement a = getDriver().findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[1]"));
+        WebElement b = getDriver().findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[2]"));
+        WebElement c = getDriver().findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[3]"));
+        WebElement d = getDriver().findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[4]"));
+        WebElement e = getDriver().findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[5]"));
+        WebElement f = getDriver().findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[6]"));
+
+        if(a.getText().isBlank() && b.getText().isBlank() && c.getText().isBlank() && d.getText().isBlank() && e.getText().isBlank() && f.getText().isBlank()){
+            return true;
+        }   return false;
+
+    }
 
 }

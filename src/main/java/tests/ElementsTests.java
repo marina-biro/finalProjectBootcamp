@@ -19,33 +19,45 @@ public class ElementsTests extends BaseTest {
     @Test (priority = 1) //TC-text_box-01
     public void populatingAndSubmittingAForm(){
         this.getTextBox().textBoxClick();
-        this.getTextBox().textBoxPopulateForm();
-        //Assert.assertEquals(this.menuPage.textBoxGetCurrAddress().getText(), "Current Address :Street 3"); // some problem with the assertation
-        Assert.assertEquals(this.getTextBox().textBoxGetConfirmationEmail().getText(),"Email:marina.nina.biro@gmail.com");
+        this.getTextBox().textBoxPopulateForm("Marina Biro", "marina.nina.biro@gmail.com", "Street 3", "Street 5");
+        Assert.assertEquals(this.getTextBox().textBox().getText(),
+                "Name:Marina Biro\n" +
+                "Email:marina.nina.biro@gmail.com\n" +
+                "Current Address :Street 3\n" +
+                "Permananet Address :Street 5");
     }
 
-    @Test (priority = 2) //TC-check_box-02
-    public void checkingAndUncheckingTheCheckBox(){
-        this.getCheckBox().checkBoxClick();
-        Assert.assertTrue(this.getCheckBox().checkBoxIsItSelectable());
-        Assert.assertEquals(this.getCheckBox().checkBoxIsItSelected(), "rct-icon rct-icon-check");
-    }
 
     @Test (priority = 3) //TC-radio_button-03
     public void checkYesRadioButton(){
-        this.getRadioButton().radioButtonClick();
+        this.getRadioButton().radioButtonOptionClick();
         this.getRadioButton().radioButtonClickYes();
-        Assert.assertEquals(this.getRadioButton().radioButtonConfirmation(), "text-success");
-        Assert.assertEquals(this.getRadioButton().radioButtonConfirmationNo2(), "Yes");
+        Assert.assertEquals(this.getRadioButton().radioBtnConfMessageClassValue(), "text-success");
+        Assert.assertEquals(this.getRadioButton().radioBtnConfMessageVisibleText(), "Yes");
+        Assert.assertFalse(this.getRadioButton().impressiveBtnSelected());
     }
 
-    @Test (priority = 4) //TC-web_tables-05
+    @Test (priority = 4) //TC-radio_button-03a
+    public void checkImpressiveRadioButton(){
+        this.getRadioButton().radioButtonOptionClick();
+        this.getRadioButton().radioButtonClickImpressive();
+        Assert.assertEquals(this.getRadioButton().radioBtnConfMessageClassValue(), "text-success");
+        Assert.assertEquals(this.getRadioButton().radioBtnConfMessageVisibleText(), "Impressive");
+        Assert.assertFalse(this.getRadioButton().yesBtnSelected());
+}
+
+    @Test (priority = 5) //TC-radio_button-03b
+    public void checkNoRadioButton(){
+        this.getRadioButton().radioButtonOptionClick();
+        Assert.assertFalse(this.getRadioButton().noBtnSelectable());
+    }
+
+    @Test (priority = 6) //TC-web_tables-05
     public void populatingAndSubmittingWebForm (){
         this.getWebTable().webTableClick();
         this.getWebTable().webTableAddEntry();
         this.getWebTable().webTablePopulateForm("John", "Doe", "john.doe@gmail.com", "30", "10000", "IT");
         this.getWebTable().webTablesSearchEntry("john.doe@gmail.com");
-        //napisati krace. jedna metoda koja uporedjuje indekse u objektu i getText. vraca tru/false
         Assert.assertEquals(this.getWebTable().webTableSearchResultName().getText(),"John");
         Assert.assertEquals(this.getWebTable().webTableSearchResultSurname().getText(), "Doe");
         Assert.assertEquals(this.getWebTable().webTableSearchResultAge().getText(), "30");
@@ -54,17 +66,25 @@ public class ElementsTests extends BaseTest {
 
     }
 
-    @Test (priority = 5) //TC-Web_Tables-06
+    @Test (priority = 7) //TC-Web_Tables-05a
     public void editingExistingEntry(){
         this.getWebTable().webTableClick();
-        this.getWebTable().createAndFindEntry();
+        this.getWebTable().webTablesSearchEntry("kierra@example.com");
         this.getWebTable().webTableEditEntry();
         this.getWebTable().webTableClearForm("Johana", "40");
         Assert.assertEquals(this.getWebTable().webTableSearchResultName().getText(),"Johana");
         Assert.assertEquals(this.getWebTable().webTableSearchResultAge().getText(), "40");
     }
 
-    @Test (priority = 6)
+    @Test (priority = 8) //TC-Web_Tables-05b
+    public void deletingExistingEntry(){
+        this.getWebTable().webTableClick();
+        this.getWebTable().webTablesSearchEntry("kierra@example.com");
+        this.getWebTable().webTableDeleteEntry();
+        Assert.assertTrue(this.getWebTable().entryDeletedRecord());
+    }
+
+    @Test (priority = 9) //TC-left_rightClick-06
     public void checkLeftAndRightClicks(){
         this.getButtons().buttonsClick();
         this.getButtons().clickOnceRight();
@@ -76,7 +96,12 @@ public class ElementsTests extends BaseTest {
     }
 
 
-
+    @Test (priority = 2) //TC-check_box-02
+    public void checkingAndUncheckingTheCheckBox(){
+        this.getCheckBox().checkBoxClick();
+        Assert.assertTrue(this.getCheckBox().checkBoxIsItSelectable());
+        Assert.assertEquals(this.getCheckBox().checkBoxIsItSelected(), "rct-icon rct-icon-check");
+    }
 
 
 
