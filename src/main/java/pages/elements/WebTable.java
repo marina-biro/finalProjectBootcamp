@@ -11,11 +11,9 @@ import pages.BasePage;
 @Data
 public class WebTable extends BasePage {
 
-        public WebTable(WebDriver driver, WebDriverWait driverWait) {
+    public WebTable(WebDriver driver, WebDriverWait driverWait) {
         super(driver, driverWait);
     }
-
-    //TC-web_tables-05
 
     private By webTableOption = By.id("item-3");
     private By webTableAddButton = By.id("addNewRecordButton");
@@ -46,6 +44,17 @@ public class WebTable extends BasePage {
         return getDriver().findElement(webTableDepartment);
     }
 
+
+    public void webTableClick(){
+        getDriver().findElement(webTableOption).click();
+    }
+
+    //TC-web_tables-05
+    public void webTableAddEntry(){
+        getDriver().findElement(webTableAddButton).click();
+
+    }
+
     public void webTablePopulateForm(String name, String lastName, String email, String age, String salary, String department){
         getWebTableFirstName().sendKeys(name);
         getWebTableLastName().sendKeys(lastName);
@@ -56,28 +65,10 @@ public class WebTable extends BasePage {
         webTableFormSubmit();
     }
 
-
-    //TC-Web_Tables-05a
-    public void webTableClearForm(String name, String age){
-        getWebTableFirstName().clear();
-        getWebTableFirstName().sendKeys(name);
-        getWebTableAge().clear();
-        getWebTableAge().sendKeys(age);
-        webTableFormSubmit();
-    }
-
-
-    public void webTableClick(){
-        getDriver().findElement(webTableOption).click();
-    }
-
-    public void webTableAddEntry(){
-        getDriver().findElement(webTableAddButton).click();
-
-    }
     public void webTableFormSubmit(){
         getDriver().findElement(webTableSubmit).click();
     }
+
 
     private By webTablesSearch = By.id("searchBox");
     private By firstNameRow = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[1]");
@@ -85,14 +76,10 @@ public class WebTable extends BasePage {
     private By ageRow = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[3]");
     private By salaryRow = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[5]");
     private By departmentRow = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[6]");
-
+    private By emailRow = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[6]");
     private By editEntryIcon = By.cssSelector("span[title='Edit']");
     private By deleteEntryIcon = By.cssSelector("span[title='Delete']");
 
-
-    public void webTablesSearchEntry(String email){
-        getDriver().findElement(webTablesSearch).sendKeys(email);
-    }
 
     public WebElement webTableSearchResultName(){
         explicitWait(5,firstNameRow);
@@ -115,11 +102,26 @@ public class WebTable extends BasePage {
         return getDriver().findElement(departmentRow);
     }
 
+    public WebElement webTableSearchResultEmail(){return  getDriver().findElement(emailRow);}
+
+
+    //TC-Web_Tables-05a
+    public void webTablesSearchEntry(String email){
+        getDriver().findElement(webTablesSearch).sendKeys(email);
+    }
+
     public void webTableEditEntry(){
         getDriverWait().until(ExpectedConditions.visibilityOfElementLocated(editEntryIcon));
         getDriver().findElement(editEntryIcon).click();
     }
 
+    public void webTableClearForm(String name, String age){
+        getWebTableFirstName().clear();
+        getWebTableFirstName().sendKeys(name);
+        getWebTableAge().clear();
+        getWebTableAge().sendKeys(age);
+        webTableFormSubmit();
+    }
 
     //TC-Web_Tables-05b
     public void webTableDeleteEntry() {
@@ -127,19 +129,12 @@ public class WebTable extends BasePage {
         getDriver().findElement(deleteEntryIcon).click();
     }
 
-
-    // must edit!!!!!!!!
-    public boolean entryDeletedRecord(){
-        WebElement a = getDriver().findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[1]"));
-        WebElement b = getDriver().findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[2]"));
-        WebElement c = getDriver().findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[3]"));
-        WebElement d = getDriver().findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[4]"));
-        WebElement e = getDriver().findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[5]"));
-        WebElement f = getDriver().findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[6]"));
-
-        if(a.getText().isBlank() && b.getText().isBlank() && c.getText().isBlank() && d.getText().isBlank() && e.getText().isBlank() && f.getText().isBlank()){
-            return true;
-        }   return false;
+    public boolean isEntryDeleted(){
+        if(webTableSearchResultName().getText().isBlank() && webTableSearchResultSurname().getText().isBlank() &&
+           webTableSearchResultAge().getText().isBlank() && webTableSearchResultSalary().getText().isBlank() &&
+           webTableSearchResultDepartment().getText().isBlank() && webTableSearchResultEmail().getText().isBlank()){
+           return true;
+        }  return false;
 
     }
 

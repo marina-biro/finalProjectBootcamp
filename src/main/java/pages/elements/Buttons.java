@@ -20,7 +20,7 @@ public class Buttons extends BasePage {
 
     private By doubleClickButton = By.id("doubleClickBtn");
     private By rightClickButton = By.id("rightClickBtn");
-    private By clickOnceButton = By.xpath("/html/body/div[2]/div/div/div[2]/div[2]/div[2]/div[3]/button");
+    private By clickOnceButton = By.xpath("/html/body/div[2]/div/div/div[2]/div[2]/div[2]/div[3]/button"); //id is changed with each page refresh
 
     private By doubleClickConfirmation = By.id("doubleClickMessage");
     private By rightClickConfirmation = By.id("rightClickMessage");

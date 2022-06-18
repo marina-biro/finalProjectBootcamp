@@ -81,7 +81,7 @@ public class ElementsTests extends BaseTest {
         this.getWebTable().webTableClick();
         this.getWebTable().webTablesSearchEntry("kierra@example.com");
         this.getWebTable().webTableDeleteEntry();
-        Assert.assertTrue(this.getWebTable().entryDeletedRecord());
+        Assert.assertTrue(this.getWebTable().isEntryDeleted());
     }
 
     @Test (priority = 9) //TC-left_rightClick-06
