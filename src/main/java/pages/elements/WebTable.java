@@ -49,10 +49,10 @@ public class WebTable extends BasePage {
         getDriver().findElement(webTableOption).click();
     }
 
+
     //TC-web_tables-05
     public void webTableAddEntry(){
         getDriver().findElement(webTableAddButton).click();
-
     }
 
     public void webTablePopulateForm(String name, String lastName, String email, String age, String salary, String department){
@@ -71,38 +71,33 @@ public class WebTable extends BasePage {
 
 
     private By webTablesSearch = By.id("searchBox");
+    private By editEntryIcon = By.cssSelector("span[title='Edit']");
+    private By deleteEntryIcon = By.cssSelector("span[title='Delete']");
     private By firstNameRow = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[1]");
     private By lastNameRow = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[2]");
     private By ageRow = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[3]");
     private By salaryRow = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[5]");
     private By departmentRow = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[6]");
     private By emailRow = By.xpath("//*[@id=\"app\"]/div/div/div[2]/div[2]/div[2]/div[3]/div[1]/div[2]/div[1]/div/div[6]");
-    private By editEntryIcon = By.cssSelector("span[title='Edit']");
-    private By deleteEntryIcon = By.cssSelector("span[title='Delete']");
-
 
     public WebElement webTableSearchResultName(){
-        explicitWait(5,firstNameRow);
         return getDriver().findElement(firstNameRow);
     }
-
     public WebElement webTableSearchResultSurname(){
         return getDriver().findElement(lastNameRow);
     }
-
     public WebElement webTableSearchResultAge(){
         return getDriver().findElement(ageRow);
     }
-
     public WebElement webTableSearchResultSalary(){
         return getDriver().findElement(salaryRow);
     }
-
     public WebElement webTableSearchResultDepartment(){
         return getDriver().findElement(departmentRow);
     }
-
-    public WebElement webTableSearchResultEmail(){return  getDriver().findElement(emailRow);}
+    public WebElement webTableSearchResultEmail(){
+        return  getDriver().findElement(emailRow);
+    }
 
 
     //TC-Web_Tables-05a
@@ -111,11 +106,10 @@ public class WebTable extends BasePage {
     }
 
     public void webTableEditEntry(){
-        getDriverWait().until(ExpectedConditions.visibilityOfElementLocated(editEntryIcon));
         getDriver().findElement(editEntryIcon).click();
     }
 
-    public void webTableClearForm(String name, String age){
+    public void webTableClearAndCorrectForm(String name, String age){
         getWebTableFirstName().clear();
         getWebTableFirstName().sendKeys(name);
         getWebTableAge().clear();
@@ -123,9 +117,9 @@ public class WebTable extends BasePage {
         webTableFormSubmit();
     }
 
+
     //TC-Web_Tables-05b
     public void webTableDeleteEntry() {
-        getDriverWait().until(ExpectedConditions.visibilityOfElementLocated(deleteEntryIcon));
         getDriver().findElement(deleteEntryIcon).click();
     }
 
@@ -135,7 +129,6 @@ public class WebTable extends BasePage {
            webTableSearchResultDepartment().getText().isBlank() && webTableSearchResultEmail().getText().isBlank()){
            return true;
         }  return false;
-
     }
 
 }

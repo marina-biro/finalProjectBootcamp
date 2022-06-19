@@ -1,6 +1,6 @@
 package tests;
 
-import pages.alertsFrameAndWindows.AlertsOption;
+import pages.alertsframeandwindows.AlertsOption;
 import lombok.Data;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

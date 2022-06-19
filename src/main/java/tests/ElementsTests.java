@@ -16,7 +16,7 @@ public class ElementsTests extends BaseTest {
     }
 
 
-    @Test (priority = 1) //TC-text_box-01
+    @Test (priority = 7) //TC-text_box-01
     public void populatingAndSubmittingAForm(){
         this.getTextBox().textBoxClick();
         this.getTextBox().textBoxPopulateForm("Marina Biro", "marina.nina.biro@gmail.com", "Street 3", "Street 5");
@@ -66,12 +66,12 @@ public class ElementsTests extends BaseTest {
 
     }
 
-    @Test (priority = 7) //TC-Web_Tables-05a
+    @Test (priority = 1) //TC-Web_Tables-05a
     public void editingExistingEntry(){
         this.getWebTable().webTableClick();
         this.getWebTable().webTablesSearchEntry("kierra@example.com");
         this.getWebTable().webTableEditEntry();
-        this.getWebTable().webTableClearForm("Johana", "40");
+        this.getWebTable().webTableClearAndCorrectForm("Johana", "40");
         Assert.assertEquals(this.getWebTable().webTableSearchResultName().getText(),"Johana");
         Assert.assertEquals(this.getWebTable().webTableSearchResultAge().getText(), "40");
     }
@@ -99,8 +99,12 @@ public class ElementsTests extends BaseTest {
     @Test (priority = 2) //TC-check_box-02
     public void checkingAndUncheckingTheCheckBox(){
         this.getCheckBox().checkBoxClick();
-        Assert.assertTrue(this.getCheckBox().checkBoxIsItSelectable());
         Assert.assertEquals(this.getCheckBox().checkBoxIsItSelected(), "rct-icon rct-icon-check");
+        Assert.assertEquals(this.getCheckBox().confMsg(), "You have selected :\n" +
+                "home\n" + "desktop\n" + "notes\n" + "commands\n" + "documents\n" + "workspace\n" + "react\n" +
+                "angular\n" + "veu\n" + "office\n" + "public\n" + "private\n" + "classified\n" + "general\n" +
+                "downloads\n" + "wordFile\n" + "excelFile");
+
     }
 
 

@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
 
@@ -14,11 +15,11 @@ public class ProgressBar extends BasePage {
 
     private By progressBarOption = By.xpath("//*[text()='Progress Bar']");
     private By startButton = By.id("startStopButton");
-    private By progressBar = By.xpath("//*[@id=\"progressBar\"]/div");
+    private By progress = By.cssSelector("div[role='progressbar']");
 
-    public WebElement progressBarElement(){
-        return getDriver().findElement(progressBar);
-    }
+ //   public WebElement progresss(){
+//        return getDriver().findElement(progress);
+//    }
 
     public void clickProgressBar() throws InterruptedException {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
@@ -26,16 +27,16 @@ public class ProgressBar extends BasePage {
         getDriver().findElement(progressBarOption).click();
         jsExecutor.executeScript("window.scrollBy(0,-500)");
         getDriver().findElement(startButton).click();
-        Thread.sleep(11200);
+        Thread.sleep(11000);
         // the following code sometimes works, most of the time the website doesn't load quickly enough
-   //   getDriverWait().until(ExpectedConditions.attributeContains(progressBarElement(), "aria-valuenow","90"));
-   //   getDriverWait().until(ExpectedConditions.textToBePresentInElement(progressBarElement(),"80%"));  // sometimes works, sometimes timeout
-   //   getDriver().findElement(startButton).click();
+//       getDriverWait().until(ExpectedConditions.attributeContains(progresss(), "aria-valuenow","40"));
+//       getDriverWait().until(ExpectedConditions.textToBePresentInElement(progresss(),"80%"));  // sometimes works, sometimes timeout
+//       getDriver().findElement(startButton).click();
 
     }
 
     public String value(){
-       String valueNow = getDriver().findElement(progressBar).getAttribute("aria-valuenow");
+       String valueNow = getDriver().findElement(progress).getAttribute("aria-valuenow");
         return valueNow;
     }
 

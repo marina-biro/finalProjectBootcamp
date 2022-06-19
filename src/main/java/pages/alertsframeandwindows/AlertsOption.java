@@ -1,4 +1,4 @@
-package pages.alertsFrameAndWindows;
+package pages.alertsframeandwindows;
 
 
 import org.openqa.selenium.*;

@@ -13,25 +13,26 @@ public class CheckBox extends BasePage {
     }
 
     private By checkBoxOption = By.id("item-1");
-    private By checkBoxBox = By.cssSelector("label[for='tree-node-home'");
-    private By checkBoxHolder = By.cssSelector("svg[class='rct-icon rct-icon-check']");
-    
+    private By checkBoxBox = By.cssSelector("label[for='tree-node-home']");
+    private By classOfAllSelected = By.cssSelector("svg[class='rct-icon rct-icon-check']"); // class of all selected buttons
+    private By expandAll = By.cssSelector("button[aria-label='Expand all']");
+    private By youHaveSelectedMsg = By.xpath("//*[@id=\"result\"]");
+
 
     public void checkBoxClick(){
-
         getDriver().findElement(checkBoxOption).click();
         getDriver().findElement(checkBoxBox).click();
-
-    }
-
-    public boolean checkBoxIsItSelectable(){
-        WebElement checkBox = getDriver().findElement(checkBoxBox);
-        return checkBox.isEnabled();
     }
 
     public String checkBoxIsItSelected() {
-        String valueAttribute = getDriver().findElement(checkBoxHolder).getAttribute("class");
+        getDriver().findElement(expandAll).click();
+        String valueAttribute = getDriver().findElement(classOfAllSelected).getAttribute("class");
         return  valueAttribute;
+    }
+
+    public String confMsg(){
+        String message = getDriver().findElement(youHaveSelectedMsg).getText();
+        return message;
     }
 
 
