@@ -27,7 +27,7 @@ public class ProgressBar extends BasePage {
         getDriver().findElement(progressBarOption).click();
         jsExecutor.executeScript("window.scrollBy(0,-500)");
         getDriver().findElement(startButton).click();
-        Thread.sleep(11000);
+        Thread.sleep(10500);
         // the following code sometimes works, most of the time the website doesn't load quickly enough
 //       getDriverWait().until(ExpectedConditions.attributeContains(progresss(), "aria-valuenow","40"));
 //       getDriverWait().until(ExpectedConditions.textToBePresentInElement(progresss(),"80%"));  // sometimes works, sometimes timeout

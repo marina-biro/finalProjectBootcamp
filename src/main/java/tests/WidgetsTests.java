@@ -16,14 +16,14 @@ public class WidgetsTests extends BaseTest{
         getHomePage().clickWidgetsOption();
     }
 
-    @Test
+    @Test (priority = 10)
     public void sliderTest(){
         getSlider().clickSliderOption();
         getSlider().moveSlider();
         Assert.assertEquals(getSlider().confirmation(), "70");
     }
 
-    @Test
+    @Test (priority = 11)
     public void progressBarTest() throws InterruptedException {
         getProgressBar().clickProgressBar();
         Assert.assertEquals(getProgressBar().value(), "100");
