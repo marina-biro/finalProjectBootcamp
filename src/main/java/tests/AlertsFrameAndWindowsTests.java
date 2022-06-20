@@ -15,7 +15,7 @@ public class AlertsFrameAndWindowsTests extends BaseTest{
         getHomePage().clickAlertsFrameAndWindowsOption();
     }
 
-    @Test (priority = 12)
+    @Test (priority = 1) //TC-alerts-12
     public void alerts(){
        getAlertsOption().alertsOptionClick();
        getAlertsOption().clickOkAlert();
@@ -26,7 +26,7 @@ public class AlertsFrameAndWindowsTests extends BaseTest{
 
     }
 
-    @Test (priority = 13)
+    @Test (priority = 2) // TC-alerts-13
     public void alertFiveSeconds(){
         getAlertsOption().alertsOptionClick();
         getAlertsOption().clickFiveSeconds();

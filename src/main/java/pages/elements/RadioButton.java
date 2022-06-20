@@ -26,27 +26,29 @@ public class RadioButton extends BasePage {
         getDriver().findElement(radioButtonOption).click();
     }
 
-
+    //TC-radio_button-03
     public void radioButtonClickYes(){
         getDriver().findElement(radioButtonYes).click();
     }
-
-    public void radioButtonClickImpressive(){
-        getDriver().findElement(radioButtonImpressive).click();
-    }
-
 
     public boolean yesBtnSelected(){
         return getDriver().findElement(radioButtonYes).isSelected();
     }
 
-    public boolean impressiveBtnSelected(){
-      return getDriver().findElement(radioButtonImpressive).isSelected();
+    //TC-radio_button-04
+    public void radioButtonClickImpressive(){
+        getDriver().findElement(radioButtonImpressive).click();
     }
 
+    public boolean impressiveBtnSelected(){
+        return getDriver().findElement(radioButtonImpressive).isSelected();
+    }
+
+    //TC-radio_button-05
     public boolean noBtnSelectable(){
         return getDriver().findElement(radioButtonNo).isEnabled();
     }
+
 
     public String radioBtnConfMessageClassValue(){
         String message = getDriver().findElement(radioButtonConfMessage).getAttribute("class");

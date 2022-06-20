@@ -2,7 +2,6 @@ package pages.elements;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.BasePage;
 
@@ -13,15 +12,16 @@ public class CheckBox extends BasePage {
     }
 
     private By checkBoxOption = By.id("item-1");
-    private By checkBoxBox = By.cssSelector("label[for='tree-node-home']");
+    private By checkBoxHome = By.cssSelector("label[for='tree-node-home']");
     private By classOfAllSelected = By.cssSelector("svg[class='rct-icon rct-icon-check']"); // class of all selected buttons
     private By expandAll = By.cssSelector("button[aria-label='Expand all']");
     private By youHaveSelectedMsg = By.xpath("//*[@id=\"result\"]");
 
+    //TC-check_box-02
 
     public void checkBoxClick(){
         getDriver().findElement(checkBoxOption).click();
-        getDriver().findElement(checkBoxBox).click();
+        getDriver().findElement(checkBoxHome).click();
     }
 
     public String checkBoxIsItSelected() {
@@ -35,5 +35,6 @@ public class CheckBox extends BasePage {
         return message;
     }
 
+    //isSelected(), selectors
 
 }

@@ -50,7 +50,7 @@ public class WebTable extends BasePage {
     }
 
 
-    //TC-web_tables-05
+    //TC-web_tables-06
     public void webTableAddEntry(){
         getDriver().findElement(webTableAddButton).click();
     }
@@ -100,7 +100,7 @@ public class WebTable extends BasePage {
     }
 
 
-    //TC-Web_Tables-05a
+    //TC-web_tables-07
     public void webTablesSearchEntry(String email){
         getDriver().findElement(webTablesSearch).sendKeys(email);
     }
@@ -118,7 +118,7 @@ public class WebTable extends BasePage {
     }
 
 
-    //TC-Web_Tables-05b
+    //TC-web_Tables-08
     public void webTableDeleteEntry() {
         getDriver().findElement(deleteEntryIcon).click();
     }

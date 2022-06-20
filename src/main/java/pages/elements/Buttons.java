@@ -29,20 +29,19 @@ public class Buttons extends BasePage {
     public WebElement doubleClickConf(){
         return getDriver().findElement(doubleClickConfirmation);
     }
-
     public WebElement rightClickConf(){
         return getDriver().findElement(rightClickConfirmation);
     }
-
     public WebElement leftClickConf(){
         return getDriver().findElement(oneClickConformation);
     }
+
 
     public void buttonsClick(){
         getDriver().findElement(buttonsOption).click();
     }
 
-
+    //TC-buttons-09
     public void clickTwoTimesLeft(){
         WebElement doubleLeftButton = getDriver().findElement(doubleClickButton);
         act.doubleClick(doubleLeftButton).perform();

@@ -32,19 +32,20 @@ public class TextBox extends BasePage {
     private WebElement getNameElement(){
         return getDriver().findElement(fullName);
     }
-
     private WebElement getEmailElement(){
         return getDriver().findElement(userEmail);
     }
-
     private WebElement getCurrentAddressElement(){
         return getDriver().findElement(currentAddress);
     }
-
     private WebElement getPermanentAddressElement(){
         return getDriver().findElement(permanentAddress);
     }
+    public WebElement textBox(){
+        return getDriver().findElement(confirmationBox);
+    }
 
+    //TC-text_box-01
     public void textBoxPopulateForm(String name, String email, String currAddress, String permaAddress){
         getNameElement().sendKeys(name);
         getEmailElement().sendKeys(email);
@@ -53,8 +54,6 @@ public class TextBox extends BasePage {
         getDriver().findElement(submitButton).click();
     }
 
-    public WebElement textBox(){
-        return getDriver().findElement(confirmationBox);
-    }
+
 
 }

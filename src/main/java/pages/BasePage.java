@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 @Data
-public class BasePage {
+public abstract class BasePage {
 
     private WebDriver driver;
     private WebDriverWait driverWait;

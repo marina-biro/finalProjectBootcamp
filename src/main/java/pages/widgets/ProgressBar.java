@@ -21,6 +21,7 @@ public class ProgressBar extends BasePage {
 //        return getDriver().findElement(progress);
 //    }
 
+    //TC-progress_bars-11
     public void clickProgressBar() throws InterruptedException {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
         jsExecutor.executeScript("window.scrollBy(0,500)");

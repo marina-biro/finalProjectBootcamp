@@ -37,7 +37,8 @@ public class ElementsTests extends BaseTest {
         Assert.assertFalse(this.getRadioButton().impressiveBtnSelected());
     }
 
-    @Test (priority = 4) //TC-radio_button-03a
+    @Test (priority = 4) //TC-radio_button-04
+
     public void checkImpressiveRadioButton(){
         this.getRadioButton().radioButtonOptionClick();
         this.getRadioButton().radioButtonClickImpressive();
@@ -46,13 +47,13 @@ public class ElementsTests extends BaseTest {
         Assert.assertFalse(this.getRadioButton().yesBtnSelected());
 }
 
-    @Test (priority = 5) //TC-radio_button-03b
+    @Test (priority = 5) //TC-radio_button-05
     public void checkNoRadioButton(){
         this.getRadioButton().radioButtonOptionClick();
         Assert.assertFalse(this.getRadioButton().noBtnSelectable());
     }
 
-    @Test (priority = 6) //TC-web_tables-05
+    @Test (priority = 6) //TC-web_tables-06
     public void populatingAndSubmittingWebForm (){
         this.getWebTable().webTableClick();
         this.getWebTable().webTableAddEntry();
@@ -66,7 +67,7 @@ public class ElementsTests extends BaseTest {
 
     }
 
-    @Test (priority = 1) //TC-Web_Tables-05a
+    @Test (priority = 1) //TC-web_tables-07
     public void editingExistingEntry(){
         this.getWebTable().webTableClick();
         this.getWebTable().webTablesSearchEntry("kierra@example.com");
@@ -76,7 +77,7 @@ public class ElementsTests extends BaseTest {
         Assert.assertEquals(this.getWebTable().webTableSearchResultAge().getText(), "40");
     }
 
-    @Test (priority = 8) //TC-Web_Tables-05b
+    @Test (priority = 8) //TC-web_Tables-08
     public void deletingExistingEntry(){
         this.getWebTable().webTableClick();
         this.getWebTable().webTablesSearchEntry("kierra@example.com");
@@ -84,7 +85,7 @@ public class ElementsTests extends BaseTest {
         Assert.assertTrue(this.getWebTable().isEntryDeleted());
     }
 
-    @Test (priority = 9) //TC-left_rightClick-06
+    @Test (priority = 9) //TC-buttons-09
     public void checkLeftAndRightClicks(){
         this.getButtons().buttonsClick();
         this.getButtons().clickOnceRight();

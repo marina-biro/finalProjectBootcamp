@@ -24,14 +24,13 @@ public class Slider extends BasePage{
         return getDriver().findElement(slider);
     }
 
-
+    //TC-alerts-12
     public void clickSliderOption(){
         JavascriptExecutor jsExecutor = (JavascriptExecutor) getDriver();
         jsExecutor.executeScript("window.scrollBy(0,500)");
         getDriverWait().until(ExpectedConditions.visibilityOfElementLocated(sliderOption));
         getDriver().findElement(sliderOption).click();
     }
-
 
     public void moveSlider(){
         int x=20;
